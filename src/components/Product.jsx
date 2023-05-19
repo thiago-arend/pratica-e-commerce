@@ -1,9 +1,17 @@
 import styled from "styled-components"
 
-export default function Product() {
+export default function Product(props) {
+    const {nome, preco, imagem} = props.product;
+    const {addProdCart} = props;
+
     return (
         <ItemProduto>
-          
+          <img src={imagem} alt={nome} />
+          <div>
+            <p>{nome}</p>
+            <p>{preco}</p>
+          </div>
+          <button onClick={() => addProdCart(props.product)}>Comprar</button>
         </ItemProduto>
     )
 }

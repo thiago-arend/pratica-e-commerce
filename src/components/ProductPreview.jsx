@@ -1,11 +1,19 @@
 import styled from "styled-components"
 
-export default function ProductPreview() {
-    return (
-        <ItemCarrinho>
-          
-        </ItemCarrinho>
-    )
+export default function ProductPreview(props) {
+  const {id, nome, preco, imagem} = props.product;
+  const {removeProdCart} = props;
+
+  return (
+    <ItemCarrinho>
+      <img src={imagem} alt={nome} />
+      <div>
+        <strong>{nome}</strong>
+        <p>{preco}</p>
+      </div>
+      <button onClick={() => removeProdCart(id)}>X</button>
+    </ItemCarrinho>
+  )
 }
 
 const ItemCarrinho = styled.div`

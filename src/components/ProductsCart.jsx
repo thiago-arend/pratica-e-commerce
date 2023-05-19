@@ -1,10 +1,12 @@
 import styled from "styled-components"
 import ProductPreview from "./ProductPreview";
 
-export default function ProductsCart() {
+export default function ProductsCart(props) {
+    const {productsCart, removeProdCart} = props;
+
     return (
         <ContainerCarrinho>
-            <ProductPreview />
+            {productsCart.map(p => <ProductPreview key={p.id} product={p} removeProdCart={removeProdCart}/>)}
         </ContainerCarrinho>
     )
 }

@@ -1,14 +1,26 @@
 import styled from "styled-components"
-import PRODUCTS from "../mock";
 import ProductsList from "./ProductsList";
 import ProductsCart from "./ProductsCart";
+import PRODUCTS from "../mock";
+import { useState } from "react";
 
 export default function App() {
+  const [productsCart, setProductsCart] = useState([]);
+
+  function addProdCart(item) {
+    if (!productsCart.map(p => p.id).includes(item.id))
+      setProductsCart([...productsCart, item]);
+  }
+
+  function removeProdCart(id) {
+    const newCart = productsCart.filter(p => p.id !== id);
+    setProductsCart(newCart);
+  }
 
   return (
     <ContainerApp>
-      <ProductsList />
-      <ProductsCart />
+      <ProductsList addProdCart={addProdCart} products={PRODUCTS}/>
+      <ProductsCart removeProdCart={removeProdCart} productsCart={productsCart}/>
     </ContainerApp>
   )
 }

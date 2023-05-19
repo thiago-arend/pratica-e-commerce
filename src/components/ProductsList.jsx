@@ -2,10 +2,12 @@
 import styled from "styled-components"
 import Product from "./Product";
 
-export default function ProductsList() {
+export default function ProductsList(props) {
+    const {products, addProdCart} = props;
+
     return (
         <ContainerListaProdutos>
-            <Product />
+            {products.map(p => <Product key={p.id} addProdCart={addProdCart} product={p} />)}
         </ContainerListaProdutos>
     )
 }

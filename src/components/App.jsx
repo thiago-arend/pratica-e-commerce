@@ -17,10 +17,19 @@ export default function App() {
     setProductsCart(newCart);
   }
 
+  function removeAllProdCart() {
+    setProductsCart([]);
+  }
+
   return (
     <ContainerApp>
-      <ProductsList addProdCart={addProdCart} products={PRODUCTS}/>
-      <ProductsCart removeProdCart={removeProdCart} productsCart={productsCart}/>
+      <ProductsList 
+        addProdCart={addProdCart} 
+        products={PRODUCTS} />
+      <ProductsCart 
+        removeAllProdCart = {removeAllProdCart} 
+        removeProdCart={removeProdCart} 
+        productsCart={productsCart} />
     </ContainerApp>
   )
 }
